@@ -1,10 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import random
-import queue
-import time
-from IPython.display import clear_output
-
 #Functions that will be very useful for creating/updating mazes
 
 '''
@@ -55,12 +48,5 @@ update the state of the maze after moving to the next tile
 -j = which column to update
 '''
 def update(maze, i, j):
-    clear_output()
     #shades the tile grey to distinguish between open and occupied
     maze[i][j] = 0.5
-    
-    
-    plt.figure(figsize=(5,5))
-    plt.imshow(maze, cmap=plt.cm.binary)
-    plt.show()
-    time.sleep(0.1)
