@@ -1,7 +1,5 @@
 #BFS Search Algorithm
 
-import methods
-
 def BFS(maze):
     #initialize the solved state of the maze to be false and our pointers to be at the beginning
     #i controls row and j controls column
@@ -9,59 +7,63 @@ def BFS(maze):
     solved = False
     i, j = 0, 0
     prev = {}
-    
+
     #initialize the fringe and store the starting point of the maze
     fringe = queue.Queue()
     fringe.put([i, j])
-    
+
     #runs until we reach the end
     while solved == False:
         '''
         #*****this is just for debugging*****
-        
+
         #print out the length of the current fringe
         print(queue.Queue.qsize(fringe))
-            
+
         #looks at the queue
         for q_item in fringe.queue:
             print(q_item)
         '''
-        
+
         #Is the maze unsolvable?
         if queue.Queue.qsize(fringe) == 0:
             #update the state of the maze, display the end result, and break the loop
             update(maze, i , j)
-            plt.figure(figsize=(5,5))
             plt.imshow(maze, cmap=plt.cm.binary)
-            plt.show()
+            plt.pause(0.05)
             print("UNSOLVABLE")
             break
-            
+
         #gets the current node and update i and j
         current = fringe.get()
         i, j = current[0], current[1]
-        
+
         #check if we have reached a solution, display the end result, and break the loop
         if i + 1 == len(maze) and j + 1 == len(maze[i]):
             update(maze, i , j)
-            plt.figure(figsize=(5,5))
             plt.imshow(maze, cmap=plt.cm.binary)
-            plt.show()
+            plt.pause(0.05)
             print("SOLVED")
-            
+
             update(maze_final, i, j)
-            
+            plt.imshow(maze, cmap=plt.cm.binary)
+            plt.pause(0.05)
+
             while i != 0 or j!= 0:
                 x = prev[i,j]
                 i, j = x[0], x[1]
                 update(maze_final, i, j)
-            
+                plt.imshow(maze_final, cmap=plt.cm.binary)
+                plt.pause(0.05)
+
             update(maze_final, 0, 0)
-            
+            plt.imshow(maze_final, cmap=plt.cm.binary)
+            plt.pause(0.05)
+
             break
-        
+
         #check down position
-        
+
         #are we outside?
         if i + 1 >= len(maze):
             pass
@@ -78,7 +80,7 @@ def BFS(maze):
                     fringe.put([i + 1, j])
 
         #check right position
-        
+
         #are we outside?
         if j + 1 >= len(maze[i]):
             pass
@@ -93,9 +95,9 @@ def BFS(maze):
                 else:
                     prev[(i, j + 1)] = (i, j)
                     fringe.put([i, j + 1])
-        
+
         #check up solution
-        
+
         #are we outside?
         if i - 1 < 0:
             pass
@@ -110,9 +112,9 @@ def BFS(maze):
                 else:
                     prev[(i - 1, j)] = (i, j)
                     fringe.put([i - 1, j])
-        
+
         #check left solution
-        
+
         #are we outside?
         if j - 1 < 0:
             pass
@@ -127,7 +129,15 @@ def BFS(maze):
                 else:
                     prev[(i, j - 1)] = (i, j)
                     fringe.put([i, j - 1])
-        
-        
+
+
         #after done checking, update the maze and start over
         update(maze, i, j)
+
+        plt.imshow(maze, cmap=plt.cm.binary)
+        plt.pause(0.05)
+        clear_output()
+
+    plt.show()
+
+BFS(grid(10,0.3))
