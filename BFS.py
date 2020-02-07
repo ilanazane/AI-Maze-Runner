@@ -1,3 +1,5 @@
+from methods import *
+
 #BFS Search Algorithm
 
 def BFS(maze):
