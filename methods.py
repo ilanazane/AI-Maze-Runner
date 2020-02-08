@@ -12,7 +12,7 @@ Define the grid to be working with
 
             **inputs**
 
--dim = dimension size of the grid 
+-dim = dimension size of the grid
 -p = probability that a grid spot will be filled or open
 '''
 
@@ -36,9 +36,8 @@ def grid(dim, p):
                 #if our random number is greater than p, then the cell will  be filled
                 else:
                     a[item][thing] = 1
-    
-    #plots the initial state of the maze 
-    plt.figure(figsize=(5,5))
+
+    #plots the initial state of the maze
     plt.imshow(a, cmap=plt.cm.binary)
     plt.show()
     time.sleep(2)
@@ -55,12 +54,5 @@ update the state of the maze after moving to the next tile
 -j = which column to update
 '''
 def update(maze, i, j):
-    clear_output()
     #shades the tile grey to distinguish between open and occupied
     maze[i][j] = 0.5
-    
-    
-    plt.figure(figsize=(5,5))
-    plt.imshow(maze, cmap=plt.cm.binary)
-    plt.show()
-    time.sleep(0.1)
