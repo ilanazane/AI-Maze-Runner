@@ -2,7 +2,7 @@ from methods import *
 
 #A* Manhattan Distance
 
-def AstarM(maze):
+def AstarM(maze, video):
     #initialize the solved state of the maze to be false and our pointers to be at the beginning
     #i controls row and j controls column
     maze_final = np.copy(maze)
@@ -33,9 +33,13 @@ def AstarM(maze):
         if len(fringe) == 0:
             #update the state of the maze, display the end result, and break the loop
             update(maze, i , j)
-            plt.imshow(maze, cmap=plt.cm.binary)
-            plt.show()
+            if video == True:
+                plt.imshow(maze, cmap=plt.cm.binary)
+                plt.show()
             print("UNSOLVABLE")
+            #value to be returned for later analysis
+            solved = 0
+            solution_length = 0
             break
             
         #gets the current node and update i and j
@@ -45,33 +49,36 @@ def AstarM(maze):
         #check if we have reached a solution, display the end result, and break the loop
         if i + 1 == len(maze) and j + 1 == len(maze[i]):
             update(maze, i , j)
-            plt.imshow(maze, cmap=plt.cm.binary)
-            plt.pause(0.05)
-            print("SOLVED")
+            if video == True:
+                plt.imshow(maze, cmap=plt.cm.binary)
+                plt.pause(0.05)
+            print("SOLUTION FOUND")
+            #value to be returned for later analysis
+            solved = 1
+            
+            solution_length = 0
             
             update(maze_final, i, j)
-            plt.imshow(maze, cmap=plt.cm.binary)
-            plt.pause(0.05)
+            if video == True:
+                plt.imshow(maze, cmap=plt.cm.binary)
+                plt.pause(0.05)
             
             while i != 0 or j!= 0:
                 x = prev[i,j]
                 i, j = x[0], x[1]
                 update(maze_final, i, j)
-                plt.imshow(maze_final, cmap=plt.cm.binary)
-                plt.pause(0.05)
+                if video == True:
+                    plt.imshow(maze_final, cmap=plt.cm.binary)
+                    plt.pause(0.05)
+                solution_length += 1
             
             update(maze_final, 0, 0)
-            plt.imshow(maze_final, cmap=plt.cm.binary)
-            plt.pause(0.05)
-            
+            if video == True:
+                plt.imshow(maze_final, cmap=plt.cm.binary)
+                plt.pause(0.05)
+                
             break
        
-    
-    
-    
-    
-    
-    
         #check left solution
         
         #are we outside?
@@ -104,7 +111,6 @@ def AstarM(maze):
                                 fringe.insert(x + 1, (i, j - 1, counter + Manhattan(maze, i, j - 1)))
                                 prev[(i, j - 1)] = (i, j)
                                 break
-                                
                                 
         #check up solution
         
@@ -208,9 +214,12 @@ def AstarM(maze):
         #after done checking, update the maze and start over
         update(maze, i, j)
         
-        plt.imshow(maze, cmap=plt.cm.binary)
-        plt.pause(0.05)
+        if video == True:
+            plt.imshow(maze, cmap=plt.cm.binary)
+            plt.pause(0.05)
+    if video == True:
+        plt.show()
         
-    plt.show()
+    return solved, solution_length
     
-AstarM(grid(10, 0.2))
+x, y = AstarM(grid(10, 0.2), video = False)
