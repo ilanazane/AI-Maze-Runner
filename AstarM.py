@@ -1,3 +1,5 @@
+from methods import *
+
 #A* Manhattan Distance
 
 def AstarM(maze):
