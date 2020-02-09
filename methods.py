@@ -1,10 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import random
-import queue
-import time
-from IPython.display import clear_output
-
 #Functions that will be very useful for creating/updating mazes
 
 '''
@@ -12,7 +5,7 @@ Define the grid to be working with
 
             **inputs**
 
--dim = dimension size of the grid
+-dim = dimension size of the grid 
 -p = probability that a grid spot will be filled or open
 '''
 
@@ -36,11 +29,6 @@ def grid(dim, p):
                 #if our random number is greater than p, then the cell will  be filled
                 else:
                     a[item][thing] = 1
-
-    #plots the initial state of the maze
-    plt.imshow(a, cmap=plt.cm.binary)
-    plt.show()
-    time.sleep(2)
     return a
 
 
@@ -53,6 +41,19 @@ update the state of the maze after moving to the next tile
 -i = which row to update
 -j = which column to update
 '''
+
 def update(maze, i, j):
     #shades the tile grey to distinguish between open and occupied
     maze[i][j] = 0.5
+    
+    
+    
+def Euclidean(maze, i, j):
+    distance = np.sqrt(pow(len(maze)-1 - i, 2) + pow(len(maze[0])-1 - j, 2))
+    return distance
+
+
+
+def Manhattan(maze, i, j):
+    distance = abs(len(maze)-1 - i) + abs(len(maze[0])-1 - j)
+    return distance
