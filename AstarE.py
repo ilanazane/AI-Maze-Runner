@@ -1,3 +1,5 @@
+from methods import *
+
 #A* Euclidean Distance
 
 def AstarE(maze):
