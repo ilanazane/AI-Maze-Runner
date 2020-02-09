@@ -144,3 +144,5 @@ def BFS(maze):
         plt.pause(0.05)
         
     plt.show()
+    
+BFS(grid(10, 0.2))
