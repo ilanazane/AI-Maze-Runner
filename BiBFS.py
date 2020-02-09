@@ -1,9 +1,9 @@
 from methods import *
 #Bi-Directional BFS
 
-def BiBFS(maze):
-#initialized state is set to false
-#i,j-->row,column from start m,n-->row,column from end
+def BiBFS(maze, video):
+    #initialized state is set to false
+    #i,j-->row,column from start m,n-->row,column from end
     maze_final=np.copy(maze)
     solved=False
     i,j=0,0
@@ -11,7 +11,7 @@ def BiBFS(maze):
     prev={}
     prev2={}
     
-#initialize fringe for starting point and fringe from ending point
+    #initialize fringe for starting point and fringe from ending point
     fringeStart=queue.Queue()
     fringeStart.put([i,j])
     fringeEnd=queue.Queue()
@@ -24,9 +24,13 @@ def BiBFS(maze):
             #update state of maze, display result, then break loop
             update(maze,i,j)
             update(maze,m,n)
-            plt.imshow(maze, cmap=plt.cm.binary)
-            plt.pause(0.05)
+            if video == True:
+                plt.imshow(maze, cmap=plt.cm.binary)
+                plt.pause(0.05)
             print("UNSOLVABLE")
+            #value to be returned for later analysis
+            solved = 0
+            solution_length = 0
             break
             
         #gets current node and updates i,j and m,n
@@ -55,32 +59,44 @@ def BiBFS(maze):
         if solved == True:
             update(maze,i,j)
             update(maze,m,n)
-            plt.imshow(maze, cmap=plt.cm.binary)
-            plt.pause(0.05)
-            print("SOLVED")
-
+            if video == True:
+                plt.imshow(maze, cmap=plt.cm.binary)
+                plt.pause(0.05)
+            print("SOLUTION FOUND")
+            #value to be returned for later analysis
+            solved = 1
+            solution_length = 1
+            
             update(maze_final,i,j)
             update(maze_final,m,n)
-            plt.imshow(maze_final, cmap=plt.cm.binary)
-            plt.pause(0.05)
+            if video == True:
+                plt.imshow(maze_final, cmap=plt.cm.binary)
+                plt.pause(0.05)
 
             while True:
                 if i==0 and j==0 and m==len(maze)-1 and n==len(maze[0])-1:
                     break
-                    
+
                 if (i,j) == (0,0):
                     y=prev2[(m,n)]
                     m,n=y[0],y[1]
                     update(maze_final,m,n)
-                    plt.imshow(maze_final, cmap=plt.cm.binary)
-                    plt.pause(0.05)
+                    if video == True:
+                        plt.imshow(maze_final, cmap=plt.cm.binary)
+                        plt.pause(0.05)
+                        
+                    solution_length += 1
+                    
                 elif (m,n) == (len(maze)-1, len(maze[0])-1):
                     x=prev[(i,j)]
                     i,j=x[0],x[1]
                     update(maze_final,i,j)
                     update(maze_final,m,n)
-                    plt.imshow(maze_final, cmap=plt.cm.binary)
-                    plt.pause(0.05)
+                    if video == True:
+                        plt.imshow(maze_final, cmap=plt.cm.binary)
+                        plt.pause(0.05)
+                        
+                    solution_length += 1
                     
                 else:
                     x=prev[(i,j)]
@@ -89,13 +105,18 @@ def BiBFS(maze):
                     m,n=y[0],y[1]
                     update(maze_final,i,j)
                     update(maze_final,m,n)
-                    plt.imshow(maze_final, cmap=plt.cm.binary)
-                    plt.pause(0.05)
+                    if video == True:
+                        plt.imshow(maze_final, cmap=plt.cm.binary)
+                        plt.pause(0.05)
+                        
+                    solution_length += 2
+                        
 
             update(maze_final,0,0)
             update(maze_final,len(maze)-1,len(maze[0])-1)
-            plt.imshow(maze_final, cmap=plt.cm.binary)
-            plt.pause(0.05)
+            if video == True:
+                plt.imshow(maze_final, cmap=plt.cm.binary)
+                plt.pause(0.05)
 
             break
             
@@ -222,8 +243,11 @@ def BiBFS(maze):
         #after done checking, update maze and start over
         update(maze, i, j)
         update(maze,m,n)
-        plt.imshow(maze, cmap=plt.cm.binary)
-        plt.pause(0.05)
-    plt.show()
+        if video == True:
+            plt.imshow(maze, cmap=plt.cm.binary)
+            plt.pause(0.05)
+    if video == True:        
+        plt.show()
+    return solved, solution_length
     
-BiBFS(grid(10,0.2))
+x, y = BiBFS(grid(10,0.2), video = False)
