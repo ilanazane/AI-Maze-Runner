@@ -2,7 +2,7 @@ from methods import *
 
 #BFS Search Algorithm
 
-def BFS(maze):
+def BFS(maze, video):
     #initialize the solved state of the maze to be false and our pointers to be at the beginning
     #i controls row and j controls column
     maze_final = np.copy(maze)
@@ -14,9 +14,10 @@ def BFS(maze):
     fringe = queue.Queue()
     fringe.put([i, j])
     
-    #plot the initial maze
-    plt.imshow(maze, cmap=plt.cm.binary)
-    plt.pause(0.05)
+    #plot the initial maze if video = True
+    if video == True:
+        plt.imshow(maze, cmap=plt.cm.binary)
+        plt.pause(0.05)
     
     #runs until we reach the end
     while solved == False:
@@ -35,9 +36,13 @@ def BFS(maze):
         if queue.Queue.qsize(fringe) == 0:
             #update the state of the maze, display the end result, and break the loop
             update(maze, i , j)
-            plt.imshow(maze, cmap=plt.cm.binary)
-            plt.pause(0.05)
+            if video == True:
+                plt.imshow(maze, cmap=plt.cm.binary)
+                plt.pause(0.05)
             print("UNSOLVABLE")
+            #value to be returned for later analysis
+            solved = 0
+            solution_length = 0
             break
             
         #gets the current node and update i and j
@@ -47,24 +52,33 @@ def BFS(maze):
         #check if we have reached a solution, display the end result, and break the loop
         if i + 1 == len(maze) and j + 1 == len(maze[i]):
             update(maze, i , j)
-            plt.imshow(maze, cmap=plt.cm.binary)
-            plt.pause(0.05)
-            print("SOLVED")
+            if video == True:
+                plt.imshow(maze, cmap=plt.cm.binary)
+                plt.pause(0.05)
+            print("SOLUTION FOUND")
+            #value to be returned for later analysis
+            solved = 1
+            
+            solution_length = 0
             
             update(maze_final, i, j)
-            plt.imshow(maze, cmap=plt.cm.binary)
-            plt.pause(0.05)
+            if video == True:
+                plt.imshow(maze, cmap=plt.cm.binary)
+                plt.pause(0.05)
             
             while i != 0 or j!= 0:
                 x = prev[i,j]
                 i, j = x[0], x[1]
                 update(maze_final, i, j)
-                plt.imshow(maze_final, cmap=plt.cm.binary)
-                plt.pause(0.05)
+                if video == True:
+                    plt.imshow(maze_final, cmap=plt.cm.binary)
+                    plt.pause(0.05)
+                solution_length += 1
             
             update(maze_final, 0, 0)
-            plt.imshow(maze_final, cmap=plt.cm.binary)
-            plt.pause(0.05)
+            if video == True:
+                plt.imshow(maze_final, cmap=plt.cm.binary)
+                plt.pause(0.05)
             
             break
         
@@ -140,9 +154,12 @@ def BFS(maze):
         #after done checking, update the maze and start over
         update(maze, i, j)
     
-        plt.imshow(maze, cmap=plt.cm.binary)
-        plt.pause(0.05)
-        
-    plt.show()
+        if video == True:
+            plt.imshow(maze, cmap=plt.cm.binary)
+            plt.pause(0.05)
+    if video == True:    
+        plt.show()
+         
+    return solved, solution_length
     
-BFS(grid(10, 0.2))
+x, y = BFS(grid(10, 0.2), video = False)
