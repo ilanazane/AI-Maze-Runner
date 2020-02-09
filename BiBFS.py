@@ -68,10 +68,6 @@ def BiBFS(maze):
                 if i==0 and j==0 and m==len(maze)-1 and n==len(maze[0])-1:
                     break
                     
-                print("i =",i)
-                print("j =",j)
-                print("m =",m)
-                print("n =",n)
                 if (i,j) == (0,0):
                     y=prev2[(m,n)]
                     m,n=y[0],y[1]
