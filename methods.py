@@ -14,6 +14,10 @@ Define the grid to be working with
 
 -dim = dimension size of the grid 
 -p = probability that a grid spot will be filled or open
+
+            **returns**
+            
+-a = the grid to be worked with
 '''
 
 def grid(dim, p):
@@ -36,6 +40,7 @@ def grid(dim, p):
                 #if our random number is greater than p, then the cell will  be filled
                 else:
                     a[item][thing] = 1
+    #return the grid to be worked with
     return a
 
 
@@ -53,13 +58,38 @@ def update(maze, i, j):
     #shades the tile grey to distinguish between open and occupied
     maze[i][j] = 0.5
     
-    
+
+'''
+Euclidean Heuristic 
+
+            **inputs**
+
+-maze = the maze being worked with
+-i = the current row to use in calculation
+-j = the current column to use in calculation
+
+            **returns**
+            
+-distance = the Euclidean distance
+'''
     
 def Euclidean(maze, i, j):
     distance = np.sqrt(pow(len(maze)-1 - i, 2) + pow(len(maze[0])-1 - j, 2))
     return distance
 
+'''
+Manhattan Heuristic
 
+            **inputs**
+
+-maze = the maze being worked with
+-i = the current row to use in calculation
+-j = the current column to use in calculation
+
+            **returns**
+            
+-distance = the Manhattan distance
+'''
 
 def Manhattan(maze, i, j):
     distance = abs(len(maze)-1 - i) + abs(len(maze[0])-1 - j)
