@@ -231,5 +231,3 @@ def AstarE(maze, video):
     plt.show()
         
     return solved, solution_length
-
-x, y = AstarE(grid(100, 0.3), video = False) #<----- AstarE Example
