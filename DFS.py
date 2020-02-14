@@ -13,6 +13,8 @@ DFS Search Algorithm
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
 -maxf = maximum size of the fringe during the search, to be used for local search
+
+x, y, z = DFS(grid(100, 0.3), video = False) #<----- DFS Example
 '''
 
 def DFS(maze, video):
@@ -179,5 +181,3 @@ def DFS(maze, video):
     plt.show()
         
     return solved, solution_length, maxf
-
-x, y, z = DFS(grid(100, 0.3), video = False) #<----- DFS Example
