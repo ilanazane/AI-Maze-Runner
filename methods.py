@@ -1,9 +1,9 @@
+#Some imports
 import numpy as np
 import matplotlib.pyplot as plt
 import random
 import queue
 import time
-from IPython.display import clear_output
 
 #Functions that will be very useful for creating/updating mazes
 
@@ -17,12 +17,12 @@ Define the grid to be working with
 
             **returns**
             
--a = the grid to be worked with
+-maze = the grid to be worked with
 '''
 
 def grid(dim, p):
     #start with a dim by dim zero array
-    a = np.zeros((dim,dim))
+    maze = np.zeros((dim,dim))
     for item in range(dim):
         for thing in range(dim):
             #makes sure the top left spot is empty
@@ -31,17 +31,17 @@ def grid(dim, p):
             #makes sure the bottom right spot is empty
             elif item == dim - 1 and thing == dim - 1:
                 pass
-            #change the cells based off of the value of p and our random number
+            #change the cells based off of the value of p and our random number, x
             else:
                 x = random.random()
                 #if our random number is less than p, then the cell will not be filled
                 if p < x:
-                    a[item][thing] = 0
+                    maze[item][thing] = 0
                 #if our random number is greater than p, then the cell will  be filled
                 else:
-                    a[item][thing] = 1
+                    maze[item][thing] = 1
     #return the grid to be worked with
-    return a
+    return maze
 
 
 '''
@@ -60,7 +60,8 @@ def update(maze, i, j):
     
 
 '''
-Euclidean Heuristic 
+Euclidean Heuristic (taking the square root resulted in issues regarding rounding float values)
+This was resolved by just using the sum of the squares (still gives same results)
 
             **inputs**
 
@@ -72,10 +73,13 @@ Euclidean Heuristic
             
 -distance = the Euclidean distance
 '''
-    
+        
 def Euclidean(maze, i, j):
-    distance = np.sqrt(pow(len(maze)-1 - i, 2) + pow(len(maze[0])-1 - j, 2))
+    #sum of squares (doesn't really change the heuristic)
+    distance = (((len(maze)-1) - i)**2) + (((len(maze[0])-1) - j)**2)
     return distance
+    
+    
 
 '''
 Manhattan Heuristic
