@@ -12,6 +12,8 @@ BFS Search Algorithm
             
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
+
+x, y, z = BFS(grid(100, 0.3), video = False) #<----- BFS Example
 '''
 
 def BFS(maze, video):
