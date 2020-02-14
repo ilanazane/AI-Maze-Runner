@@ -180,4 +180,4 @@ def DFS(maze, video):
         
     return solved, solution_length, maxf
 
-#x, y, z = DFS(grid(100, 0.3), video = False) <----- example of how to run DFS
+x, y, z = DFS(grid(100, 0.3), video = False) #<----- DFS Example
