@@ -167,5 +167,3 @@ def BFS(maze, video):
     plt.show()
     
     return solved, solution_length
-
-x, y = BFS(grid(100, 0.3), video = False) #<----- BFS Example
