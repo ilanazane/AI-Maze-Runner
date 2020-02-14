@@ -239,4 +239,4 @@ def AstarM(maze, video):
         
     return solved, solution_length, maxNode
 
-#x, y, z = AstarM(grid(100, 0.3), video = False) <----- example of how to run AstarM
+x, y, z = AstarM(grid(100, 0.3), video = False) #<----- AstarM Example
