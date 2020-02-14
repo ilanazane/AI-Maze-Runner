@@ -225,7 +225,7 @@ def AstarE(maze, video):
             plt.imshow(maze, cmap=plt.cm.binary)
             plt.pause(0.05)
 
-    plt.figure(figsize=(15,15))
+    plt.figure(figsize=(10,10))
     plt.title("AstarE", fontsize = 40)
     plt.imshow(maze_final, cmap=plt.cm.binary)
     plt.show()
