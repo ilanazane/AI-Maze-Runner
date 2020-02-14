@@ -173,7 +173,7 @@ def DFS(maze, video):
     if video == True:
         plt.show()
         
-    plt.figure(figsize=(15,15))
+    plt.figure(figsize=(10,10))
     plt.title("DFS", fontsize = 40)
     plt.imshow(maze_final, cmap=plt.cm.binary)
     plt.show()
