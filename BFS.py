@@ -168,4 +168,4 @@ def BFS(maze, video):
     
     return solved, solution_length
 
-#x, y = BFS(grid(100, 0.3), video = False) <----- example of how to run BFS
+x, y = BFS(grid(100, 0.3), video = False) #<----- BFS Example
