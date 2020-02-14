@@ -232,4 +232,4 @@ def AstarE(maze, video):
         
     return solved, solution_length
 
-#x, y = AstarE(grid(100, 0.3), video = False) <----- example of how to run AstarE
+x, y = AstarE(grid(100, 0.3), video = False) #<----- AstarE Example
