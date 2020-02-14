@@ -49,7 +49,7 @@ def DFS(maze, video):
             update(maze, i , j)
             if video == True:
                 plt.imshow(maze, cmap=plt.cm.binary)
-                plt.show()
+                plt.pause(0.05)
             print("UNSOLVABLE")
             #set the values of solved and solution_length to be zero
             solved = 0
