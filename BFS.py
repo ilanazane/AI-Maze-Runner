@@ -161,7 +161,7 @@ def BFS(maze, video):
             plt.pause(0.05)
     
     #show the final state of the maze whether video is True of False
-    plt.figure(figsize=(15,15))
+    plt.figure(figsize=(10,10))
     plt.title("BFS", fontsize = 40)
     plt.imshow(maze_final, cmap=plt.cm.binary)
     plt.show()
