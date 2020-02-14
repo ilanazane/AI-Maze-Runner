@@ -62,5 +62,5 @@ def hillClimb(maze,consec_fails):
                 return hillClimb(mazeOriginal,consec_fails)
     print('no solution')
 
-a=randomWalk(grid(20,0.2),0)
+a=hillClimb(grid(20,0.2),0)
 print(a)
