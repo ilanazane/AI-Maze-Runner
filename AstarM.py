@@ -13,6 +13,9 @@ A* Manhattan Search Algorithm
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
 -maxNode = the total number of nodes expanded, to be used for local search
+
+
+x, y, z = AstarM(grid(100, 0.3), video = False) #<----- AstarM Example
 '''
 
 def AstarM(maze, video):
@@ -238,5 +241,3 @@ def AstarM(maze, video):
     plt.show()
         
     return solved, solution_length, maxNode
-
-x, y, z = AstarM(grid(100, 0.3), video = False) #<----- AstarM Example
