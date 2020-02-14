@@ -275,4 +275,4 @@ def BiBFS(maze, video):
     
     return solved, solution_length
 
-#x, y = BiBFS(grid(100, 0.3), video = False) <----- example of how to run BiBFS
+x, y = BiBFS(grid(100, 0.3), video = False) #<----- BiBFS Example
