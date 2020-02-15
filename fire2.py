@@ -4,18 +4,18 @@ from methods import *
 Maze on Fire Strategy 2
 
             **inputs**
-            
+
 -maze = a dim x dim array to be worked with
 -video = boolean variable to either show a live update of the maze or not
 -show_final = boolean variable to either display the final solution or not
 -q = a number between 0 and 1, dictating the rate that the fire spreads
 
             **returns**
-            
+
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
 
-x, y = fire2(firegrid(100, 0.2), video = False, show_final = True, q = 0.1) #<----- fire2 Example
+x, y = fire2(firegrid(50, 0.2), video = True, show_final = False, q = 0.1) #<----- fire2 Example
 '''
 
 def fire2(maze, video, show_final, q):
@@ -69,6 +69,10 @@ def fire2(maze, video, show_final, q):
 
         i, j = current[0], current[1]
         counter = current[2] - Manhattan(maze, i, j) + 1
+
+        #if the cell we are looking at is filled with fire, dont go there!
+        if maze[i][j] == 0.75:
+            continue
 
         #check if we have reached a solution, if so, display the end result and break the loop
         if i + 1 == len(maze) and j + 1 == len(maze[i]):
@@ -245,7 +249,7 @@ def fire2(maze, video, show_final, q):
             plt.pause(0.05)
 
     if show_final == True:
-           plt.figure(figsize=(10,10))
+           plt.figure(figsize=(7,7))
            plt.title("AstarM", fontsize = 40)
            plt.imshow(maze_final, cmap=plt.cm.binary)
            plt.show()
