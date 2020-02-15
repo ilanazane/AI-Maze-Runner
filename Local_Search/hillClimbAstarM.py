@@ -52,3 +52,4 @@ def hillClimbAstarM(maze,consec_fails):
                 consec_fails+=1
                 return hillClimbAstarM(mazeOriginal,consec_fails)
     print('no solution, try again (initial maze failure)')
+    return []
