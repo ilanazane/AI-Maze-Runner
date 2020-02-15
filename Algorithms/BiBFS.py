@@ -16,7 +16,7 @@ BiBFS Search Algorithm
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
 
-x, y = BiBFS(grid(100, 0.3), video = False) #<----- BiBFS Example
+x, y = BiBFS(grid(100, 0.3), video = False, show_final = True) #<----- BiBFS Example
 '''
 
 def BiBFS(maze, video, show_final):
