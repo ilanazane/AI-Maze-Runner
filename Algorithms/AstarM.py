@@ -18,7 +18,7 @@ A* Manhattan Search Algorithm
 -maxNode = the total number of nodes expanded, to be used for local search
 
 
-x, y, z = AstarM(grid(100, 0.3), video = False) #<----- AstarM Example
+x, y, z = AstarM(grid(100, 0.3), video = False, show_final) #<----- AstarM Example
 '''
 
 def AstarM(maze, video, show_final):
