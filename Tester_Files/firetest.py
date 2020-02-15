@@ -1,7 +1,9 @@
+import sys
+sys.path.append('../')
 from methods import *
-from fire1 import fire1
-from fire2 import fire2
-from fire3 import fire3
+from Maze_On_Fire.fire1 import fire1
+from Maze_On_Fire.fire2 import fire2
+from Maze_On_Fire.fire3 import fire3
 
 '''
 ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** 
