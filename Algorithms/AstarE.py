@@ -16,7 +16,7 @@ A* Euclidean Search Algorithm
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
 
-x, y = AstarE(grid(100, 0.3), video = False) #<----- AstarE Example
+x, y = AstarE(grid(100, 0.3), video = False, show_final = True) #<----- AstarE Example
 '''
 
 def AstarE(maze, video, show_final):
