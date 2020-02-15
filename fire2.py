@@ -15,7 +15,7 @@ Maze on Fire Strategy 2
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
 -maxNode = the total number of nodes expanded, to be used for local search
-x, y, z = fire1(firegrid(100, 0.2), video = False, show_final = True) #<----- fire1 Example
+x, y, z = fire2(firegrid(100, 0.2), video = False, show_final = True) #<----- fire2 Example
 '''
 
 def fire2(maze, video, show_final, q):
