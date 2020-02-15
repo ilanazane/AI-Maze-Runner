@@ -7,6 +7,7 @@ BFS Search Algorithm
 
 -maze = a dim x dim array to be worked with
 -video = boolean variable to either show a live update of the maze or not
+-show_final = boolean variable to either display the final solution or not
 
             **returns**
             
@@ -16,7 +17,7 @@ BFS Search Algorithm
 x, y = BFS(grid(100, 0.3), video = False) #<----- BFS Example
 '''
 
-def BFS(maze, video):
+def BFS(maze, video, show_final):
     #initialize the solved state of the maze to be false and our pointers, i and j, to be at the beginning
     #i controls row and j controls column
     solved = False
@@ -162,10 +163,10 @@ def BFS(maze, video):
             plt.imshow(maze, cmap=plt.cm.binary)
             plt.pause(0.05)
     
-    #show the final state of the maze whether video is True of False
-    plt.figure(figsize=(10,10))
-    plt.title("BFS", fontsize = 40)
-    plt.imshow(maze_final, cmap=plt.cm.binary)
-    plt.show()
+    if show_final == True:
+           plt.figure(figsize=(10,10))
+           plt.title("BFS", fontsize = 40)
+           plt.imshow(maze_final, cmap=plt.cm.binary)
+           plt.show()
     
     return solved, solution_length
