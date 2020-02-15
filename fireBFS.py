@@ -8,6 +8,7 @@ def BFS(maze, video):
     #initialize the solved state of the maze to be false and our pointers to be at the beginning
     #i controls row and j controls column
     maze_final = np.copy(maze)
+    onFire = False
     solved = False
     i, j = 0, 0
     prev = {}
@@ -22,7 +23,7 @@ def BFS(maze, video):
         plt.pause(0.05)
 
     #runs until we reach the end
-    while solved == False:
+    while solved == False and onFire == False:
         '''
         #*****this is just for debugging*****
 
@@ -33,6 +34,7 @@ def BFS(maze, video):
         for q_item in fringe.queue:
             print(q_item)
         '''
+
 
         #Is the maze unsolvable?
         if queue.Queue.qsize(fringe) == 0:
@@ -51,6 +53,11 @@ def BFS(maze, video):
         #gets the current node and update i and j
         current = fringe.get()
         i, j = current[0], current[1]
+        #check if ij is on fire
+        if maze[i][j]==0.75:
+            onFire=True
+            print("U BURNED")
+            break
 
         #check if we have reached a solution, display the end result, and break the loop
         if i + 1 == len(maze) and j + 1 == len(maze[i]):
@@ -92,7 +99,7 @@ def BFS(maze, video):
             pass
         else:
             #is the next position occupied or previously visited?
-            if maze[i + 1][j] == 1 or maze[i + 1][j] == 0. or maze[i - 1][j] == 0.75:
+            if maze[i + 1][j] == 1 or maze[i + 1][j] == 0.5 :#or maze[i + 1][j] == 0.75:
                 pass
             else:
                 #add to fringe if valid and is not already in fringe
@@ -109,7 +116,7 @@ def BFS(maze, video):
             pass
         else:
             #is the next position occupied or previously visited?
-            if maze[i][j + 1] == 1 or maze[i][j + 1] == 0.5 or maze[i][j + 1] == 0.75:
+            if maze[i][j + 1] == 1 or maze[i][j + 1] == 0.5: #or maze[i][j + 1] == 0.75:
                 pass
             else:
                 #add to fringe if valid and is not already in fringe
@@ -126,7 +133,7 @@ def BFS(maze, video):
             pass
         else:
             #is the next position occupied or previously visited?
-            if maze[i - 1][j] == 1 or maze[i - 1][j] == 0.5  or maze[i - 1][j] == 0.75:
+            if maze[i - 1][j] == 1 or maze[i - 1][j] == 0.5: # or maze[i - 1][j] == 0.75:
                 pass
             else:
                 #add to fringe if valid and is not already in fringe
@@ -143,7 +150,7 @@ def BFS(maze, video):
             pass
         else:
             #is the next position occupied or previously visited?
-            if maze[i][j - 1] == 1 or maze[i][j - 1] == 0.5 or maze[i - 1][j] == 0.75:
+            if maze[i][j - 1] == 1 or maze[i][j - 1] == 0.5: #or maze[i][j - 1] == 0.75:
                 pass
             else:
                 #add to fringe if valid and is not already in fringe
