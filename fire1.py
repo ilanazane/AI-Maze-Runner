@@ -1,4 +1,4 @@
-from firemethods import *
+from methods import *
 
 '''
 Maze on Fire Strategy 1
