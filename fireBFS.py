@@ -1,4 +1,4 @@
-from firexmethods import *
+from firemethods import *
 
 #BFS Search Algorithm
 
