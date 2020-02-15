@@ -1,20 +1,25 @@
-from firemethods import *
+from methods import *
 
 '''
-A* firemanhattan Search Algorithm
+Maze on Fire Strategy 3
+
             **inputs**
+            
 -maze = a dim x dim array to be worked with
 -video = boolean variable to either show a live update of the maze or not
 -show_final = boolean variable to either display the final solution or not
-            **returns**
+-q = a number between 0 and 1, dictating the rate that the fire spreads
 
+            **returns**
+            
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
--maxNode = the total number of nodes expanded, to be used for local search
-x, y, z = AstarM(100, 0.3), video = False) #<----- AstarM Example
+
+x, y = fire3(firegrid(100, 0.2), video = False, show_final = True, q = 0.1) #<----- fire3 Example
 '''
 
-def fireAstarM(maze, q, video, show_final):
+
+def fire3(maze, video, show_final, q):
     #initialize the solved state of the maze to be false and our pointers to be at the beginning
     #i controls row and j controls column
     solved = False
@@ -236,7 +241,7 @@ def fireAstarM(maze, q, video, show_final):
 
 
         #after done checking, update the maze and keep going
-        updateFire(maze, q)
+        updateFire(maze, q, len(maze))
         update(maze, i, j)
 
 
@@ -252,4 +257,4 @@ def fireAstarM(maze, q, video, show_final):
 
     return solved, solution_length, maxNode
 
-fireAstarM(firegrid(10, 0.2), 0.1, video = True, show_final = False)
+fire3(firegrid(10, 0.2), 0.1, video = True, show_final = False, q = 0.1)
