@@ -7,6 +7,7 @@ BiBFS Search Algorithm
 
 -maze = a dim x dim array to be worked with
 -video = boolean variable to either show a live update of the maze or not
+-show_final = boolean variable to either display the final solution or not
 
             **returns**
             
@@ -16,7 +17,7 @@ BiBFS Search Algorithm
 x, y = BiBFS(grid(100, 0.3), video = False) #<----- BiBFS Example
 '''
 
-def BiBFS(maze, video):
+def BiBFS(maze, video, show_final):
     #initialized state is set to false
     #i,j-->row,column from start m,n-->row,column from end
     solved=False
@@ -269,10 +270,10 @@ def BiBFS(maze, video):
     if video == True:        
         plt.show()
     
-    #show the final state of the maze whether video is True of False
-    plt.figure(figsize=(10,10))
-    plt.title("BiBFS", fontsize = 40)
-    plt.imshow(maze_final, cmap=plt.cm.binary)
-    plt.show()
+    if show_final == True:
+           plt.figure(figsize=(10,10))
+           plt.title("BiBFS", fontsize = 40)
+           plt.imshow(maze_final, cmap=plt.cm.binary)
+           plt.show()
     
     return solved, solution_length
