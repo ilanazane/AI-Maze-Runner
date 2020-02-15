@@ -9,8 +9,6 @@ def hillClimbDFS(maze, consec_fails):
     print(consec_fails)
     #if there are more than 10 consistent fails, local maxima reached
     if consec_fails > np.sqrt(len(maze)):
-        plt.imshow(maze, cmap=plt.cm.binary)
-        plt.show()
         return maze
     else:
         mazeOriginal=np.copy(maze)
