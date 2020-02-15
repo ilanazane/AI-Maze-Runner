@@ -12,11 +12,11 @@ Define the grid to be working with
 
             **inputs**
 
--dim = dimension size of the grid 
+-dim = dimension size of the grid
 -p = probability that a grid spot will be filled or open
 
             **returns**
-            
+
 -maze = the grid to be worked with
 '''
 
@@ -59,7 +59,7 @@ update the state of the maze after moving to the next tile
 def update(maze, i, j):
     #shades the tile grey to distinguish between open and occupied
     maze[i][j] = 0.5
-    
+
 
 '''
 Euclidean Heuristic (taking the square root resulted in issues regarding rounding float values)
@@ -72,15 +72,15 @@ This was resolved by just using the sum of the squares (still gives same results
 -j = the current column to use in calculation
 
             **returns**
-            
+
 -distance = the Euclidean distance
 '''
-    
-           
+
+
 def Euclidean(maze, i, j):
     distance = np.sqrt((((len(maze)-1) - i)**2) + (((len(maze[0])-1) - j)**2))
     return distance
-    
+
 
 '''
 Manhattan Heuristic
@@ -92,7 +92,7 @@ Manhattan Heuristic
 -j = the current column to use in calculation
 
             **returns**
-            
+
 -distance = the Manhattan distance
 '''
 
@@ -111,7 +111,7 @@ Create a grid to be worked on with an initial cell on fire
 -p = probability that a grid spot will be filled or open
 
             **returns**
-            
+
 -maze = the grid to be worked with
 '''
 
@@ -152,7 +152,7 @@ def firegrid(dim, p):
 
 
 '''
-Count the number of neighboors on fire
+Count the number of neighbors on fire
 
             **inputs**
 
@@ -162,8 +162,8 @@ Count the number of neighboors on fire
 -dim = the dimension size of the maze being worked with
 
             **returns**
-            
--k = the number of neighboors on fire
+
+-k = the number of neighbors on fire
 '''
 
 
@@ -181,7 +181,7 @@ def countFires(maze, i, j, dim):
 
 
 '''
-Probabilistically update the fire state of every cell depending on the number of neighbooring cells on fire
+Probabilistically update the fire state of every cell depending on the number of neighboring cells on fire
 
             **inputs**
 
@@ -189,12 +189,12 @@ Probabilistically update the fire state of every cell depending on the number of
 -q = a number between 0 and 1, dictating the rate that the fire spreads
 
             **returns**
-            
+
 -maze = the updated maze
 '''
 
 
-def updateFire(maze, q, dim ):
+def updateFire(maze, q, dim):
     for item in range(dim):
         for thing in range(dim):
             k = countFires(maze, item, thing, dim)
@@ -205,12 +205,25 @@ def updateFire(maze, q, dim ):
                 maze[item][thing] = 0.75
     return maze
 
-#fire heuristic that accounts for probability of a cell being on fire.
-def firemanhattan(maze, i, j, q):
-    k = countFires(maze, i, j)
-    p= 1-((1-q)**k)
-    #print ("p", p)
-    distance = abs(len(maze)-1 - i) + abs(len(maze[0])-1 - j)+(10*p)
-    #print ("dist ", distance)
-    return distance
 
+'''
+Fire heuristic that accounts for probability of a cell being on fire 
+
+            **inputs**
+
+-maze = the maze being worked with
+-i = the current row to use in calculation
+-j = the current column to use in calculation
+-q = a number between 0 and 1, dictating the rate that the fire spreads
+
+            **returns**
+
+-distance = the Manhattan distance with added probability a neighboring cell is going to catch on fire
+'''
+
+
+def firemanhattan(maze, i, j, q):
+    k = countFires(maze, i, j, len(maze))
+    p = 1-((1-q)**k)
+    distance = abs(len(maze)-1 - i) + abs(len(maze[0])-1 - j)+(len(maze)*p)
+    return distance
