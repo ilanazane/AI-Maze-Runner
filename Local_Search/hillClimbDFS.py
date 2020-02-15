@@ -51,3 +51,4 @@ def hillClimbDFS(maze, consec_fails):
                 #continue hillClimb with original maze
                 return hillClimbDFS(mazeOriginal,consec_fails)
     print('no solution, try again (initial maze failure)')
+    return []
