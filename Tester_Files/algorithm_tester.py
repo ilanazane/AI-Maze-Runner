@@ -1,3 +1,5 @@
+import sys
+sys.path.append('../')
 from methods import *
 from Algorithms.BFS import BFS
 from Algorithms.DFS import DFS
