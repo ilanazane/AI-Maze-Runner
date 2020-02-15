@@ -78,8 +78,7 @@ This was resolved by just using the sum of the squares (still gives same results
     
            
 def Euclidean(maze, i, j):
-    #sum of squares (doesn't really change the heuristic)
-    distance = np.round(np.sqrt((((len(maze)-1) - i)**2) + (((len(maze[0])-1) - j)**2)))
+    distance = np.sqrt((((len(maze)-1) - i)**2) + (((len(maze[0])-1) - j)**2))
     return distance
     
 
