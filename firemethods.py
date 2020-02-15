@@ -56,14 +56,14 @@ def countFires(maze, i, j, dim):
         k+=1
     return k
 
-def updateFire(maze, i ,j, q, dim ):
+def updateFire(maze, q, dim ):
     for item in range(dim):
         for thing in range(dim):
             k = countFires(maze, item, thing,dim)
             #print(k)
             p = 1-((1-q)**k)
             x = random.random()
-            if p > x and maze[item][thing]!=1:
+            if p > x and maze[item][thing]==0:
                 maze[item][thing] = 0.75
     return maze
 
