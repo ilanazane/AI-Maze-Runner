@@ -1,7 +1,4 @@
-# AI-Project-1
+# Maze Runner
+# Code by: William Bidle, Ilana Zane, and Abinaya Sivakumar
 
-To see the output of the algorithms, run the testing.py file
-
-To run the local search, run the LocalSearch.py file
-
-To run the maze on fire, run the .........
+The Tester_Files folder contains files to run the algorithms, local search, as well as maze on fire
