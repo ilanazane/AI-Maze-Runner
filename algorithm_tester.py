@@ -1,9 +1,9 @@
 from methods import *
-from BFS import BFS
-from DFS import DFS
-from BiBFS import BiBFS
-from AstarE import AstarE
-from AstarM import AstarM
+from Algorithms.BFS import BFS
+from Algorithms.DFS import DFS
+from Algorithms.BiBFS import BiBFS
+from Algorithms.AstarE import AstarE
+from Algorithms.AstarM import AstarM
 
 '''
 ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** 
