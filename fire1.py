@@ -1,7 +1,7 @@
 from firemethods import *
 
 '''
-Maze on Fire Strategy 1 (don't 
+Maze on Fire Strategy 1
 
             **inputs**
 
