@@ -164,7 +164,7 @@ def BFS(maze, video):
         #after done checking, update the maze and start over
 
         update(maze, i, j)
-        updateFire(maze, i, j, 0.1, 10)
+        updateFire(maze, 0.1, 10)
         if video == True:
             plt.imshow(maze, cmap=plt.cm.binary)
             plt.pause(0.05)
