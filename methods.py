@@ -204,3 +204,13 @@ def updateFire(maze, q, dim ):
             if p > x and maze[item][thing]==0:
                 maze[item][thing] = 0.75
     return maze
+
+#fire heuristic that accounts for probability of a cell being on fire.
+def firemanhattan(maze, i, j, q):
+    k = countFires(maze, i, j)
+    p= 1-((1-q)**k)
+    #print ("p", p)
+    distance = abs(len(maze)-1 - i) + abs(len(maze[0])-1 - j)+(10*p)
+    #print ("dist ", distance)
+    return distance
+
