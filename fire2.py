@@ -14,8 +14,8 @@ Maze on Fire Strategy 2
             
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
--maxNode = the total number of nodes expanded, to be used for local search
-x, y, z = fire2(firegrid(100, 0.2), video = False, show_final = True) #<----- fire2 Example
+
+x, y = fire2(firegrid(100, 0.2), video = False, show_final = True, q = 0.1) #<----- fire2 Example
 '''
 
 def fire2(maze, video, show_final, q):
@@ -30,8 +30,6 @@ def fire2(maze, video, show_final, q):
     prev = {}
     #establish a counter to keep track of the number of moves made so far (is g(n))
     counter = 0
-    #all nodes explored. initialize to 0
-    maxNode=0
 
     #initialize the fringe and store the starting point of the maze
     fringe = []
@@ -69,8 +67,6 @@ def fire2(maze, video, show_final, q):
         #gets the current node and update i and j; update counter
         current = fringe.pop()
 
-        #every time a node is explored, increase maxNode by 1
-        maxNode += 1
         i, j = current[0], current[1]
         counter = current[2] - Manhattan(maze, i, j) + 1
 
@@ -254,4 +250,4 @@ def fire2(maze, video, show_final, q):
            plt.imshow(maze_final, cmap=plt.cm.binary)
            plt.show()
 
-    return solved, solution_length, maxNode
+    return solved, solution_length
