@@ -1,20 +1,24 @@
 from firemethods import *
 
 '''
-A* Manhattan Search Algorithm
+Maze on Fire Strategy 2
+
             **inputs**
+            
 -maze = a dim x dim array to be worked with
 -video = boolean variable to either show a live update of the maze or not
 -show_final = boolean variable to either display the final solution or not
-            **returns**
+-q = a number between 0 and 1, dictating the rate that the fire spreads
 
+            **returns**
+            
 -solved = 1 if solved, 0 if not
 -solution_length = integer value of the final solution length
 -maxNode = the total number of nodes expanded, to be used for local search
-x, y, z = AstarM(100, 0.3), video = False) #<----- AstarM Example
+x, y, z = fire1(firegrid(100, 0.2), video = False, show_final = True) #<----- fire1 Example
 '''
 
-def fireAstarM(maze, video, show_final):
+def fire2(maze, video, show_final, q):
     #initialize the solved state of the maze to be false and our pointers to be at the beginning
     #i controls row and j controls column
     solved = False
@@ -37,12 +41,15 @@ def fireAstarM(maze, video, show_final):
         plt.imshow(maze, cmap=plt.cm.binary)
         plt.pause(0.05)
 
-    #runs until we reach the end
+    #runs until we reach the end or burn
     while solved == False and onFire == False:
         #check if ij is on fire
         if maze[i][j]==0.75:
             onFire=True
             print("U BURNED")
+            #set the values of solved and solution_length to be zero
+            solved = 0
+            solution_length = 0
             break
 
 
@@ -233,7 +240,7 @@ def fireAstarM(maze, video, show_final):
 
 
         #after done checking, update the maze and keep going
-        updateFire(maze, 0.2)
+        updateFire(maze, 0.2, len(maze))
         update(maze, i, j)
 
 
