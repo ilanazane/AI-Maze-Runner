@@ -22,6 +22,10 @@ x, y, z = AstarM(grid(100, 0.3), video = False) #<----- AstarM Example
 '''
 
 def AstarM(maze, video, show_final):
+    ##########this is for local search only; if we enter in an unsolvable maze return 0##########
+    if len(maze) == 0:
+        return 0       
+    
     #initialize the solved state of the maze to be false and our pointers to be at the beginning
     #i controls row and j controls column
     solved = False
