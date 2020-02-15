@@ -10,8 +10,6 @@ def hillClimbAstarM(maze,consec_fails):
     print('fails',consec_fails)
     #if more than 10 consecutive fails, we have reached local maxima
     if consec_fails > np.sqrt(len(maze)):
-        plt.imshow(maze, cmap=plt.cm.binary)
-        plt.show()
         return maze
     else:
         mazeOriginal=np.copy(maze)
