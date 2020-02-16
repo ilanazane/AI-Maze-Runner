@@ -17,13 +17,7 @@ Just change video = False to video = True for the below algorithms to see large 
 ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 '''
 
-#x, y = BFS(grid(100, 0.3), video = False) #<----- BFS Example
-#x, y, z = DFS(grid(100, 0.3), video = False) #<----- DFS Example
-#x, y = BiBFS(grid(100, 0.3), video = False) #<----- BiBFS Example
-#x, y = AstarE(grid(100, 0.3), video = False) #<----- AstarE Example
-#x, y, z = AstarM(grid(100, 0.3), video = False) #<----- AstarM Example
-
-#make 5 copies of the same maze to be run by each algorithm
+#make copies of the same maze to be run by each algorithm
 a = grid(75, 0.2)
 b = np.copy(a)
 c = np.copy(a)
@@ -37,4 +31,8 @@ AstarM(d, video = False, show_final = True)
 AstarE(e, video = False, show_final = True)
 
 #demonstrate the video for BiBFS (the others are all the same... this one is the coolest)
+BFS(grid(10, 0.2), video = True, show_final = True)
+DFS(grid(10, 0.2), video = True, show_final = True)
 BiBFS(grid(10, 0.2), video = True, show_final = True)
+AstarM(grid(10, 0.2), video = True, show_final = True)
+AstarE(grid(10, 0.2), video = True, show_final = True)
