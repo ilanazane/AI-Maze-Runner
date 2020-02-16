@@ -33,8 +33,6 @@ def fire3(maze, video, show_final, q):
     prev = {}
     #establish a counter to keep track of the number of moves made so far (is g(n))
     counter = 0
-    #all nodes explored. initialize to 0
-    maxNode=0
 
     #initialize the fringe and store the starting point of the maze
     fringe = []
@@ -61,9 +59,6 @@ def fire3(maze, video, show_final, q):
 
         #gets the current node and update i and j; update counter
         current = fringe.pop()
-
-        #every time a node is explored, increase maxNode by 1
-        maxNode += 1
         i, j = current[0], current[1]
         counter = current[2] - firemanhattan(maze, i, j, q) + 1
 
@@ -252,4 +247,4 @@ def fire3(maze, video, show_final, q):
            plt.imshow(maze_final, cmap=plt.cm.binary)
            plt.show()
 
-    return solved, solution_length, maxNode
+    return solved, solution_length
