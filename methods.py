@@ -177,7 +177,7 @@ def updateFire(maze, q, dim):
             #print(k)
             p = 1-((1-q)**k)
             x = random.random()
-            if p > x and maze[item][thing]==0:
+            if p > x and maze[item][thing]!=1:
                 maze[item][thing] = 0.75
     return maze
 
