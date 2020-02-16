@@ -13,7 +13,7 @@ For running the different strategies on the same mazes
 '''
 
 #make copies of the same maze to be run by each algorithm
-a = firegrid(10, 0.2)
+a = firegrid(15, 0.2)
 b = np.copy(a)
 c = np.copy(a)
 
