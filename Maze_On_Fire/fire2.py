@@ -242,7 +242,7 @@ def fire2(maze, video, show_final, q):
 
 
         #after done checking, update the maze and keep going
-        updateFire(maze, 0.2, len(maze))
+        updateFire(maze, q, len(maze))
         update(maze, i, j)
 
 
