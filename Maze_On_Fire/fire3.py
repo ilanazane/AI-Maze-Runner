@@ -46,15 +46,6 @@ def fire3(maze, video, show_final, q):
 
     #runs until we reach the end
     while solved == False and onFire == False:
-        #check if ij is on fire
-        if maze[i][j]==0.75:
-            onFire=True
-            print("U BURNED")
-            solved = 0
-            solution_length = 0
-            break
-
-
         #Is the maze unsolvable?
         if len(fringe) == 0:
             #update the state of the maze, display the end result, and break the loop
